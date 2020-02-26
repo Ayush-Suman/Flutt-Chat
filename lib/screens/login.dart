@@ -41,6 +41,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   double blurRadiusGoogle = 6;
   double spreadRadiusGoogle = -1;
   double offsetGoogle = 4;
+  String GoogleSignInButton = "Google Sign In";
 
 
   void toggle() {
@@ -62,6 +63,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       blurRadiusGoogle = 0;
       spreadRadiusGoogle = 0;
       offsetGoogle = 0;
+      GoogleSignInButton = "Btn not handled";
     });
   }
 
@@ -231,7 +233,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onPressed: GoogleSignIn,
-                        child: Text("Google Sign In"))))
+                        child: Text(GoogleSignInButton))))
           ])));
     }));
   }
