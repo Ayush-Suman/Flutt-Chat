@@ -62,8 +62,21 @@ class _ChatListState extends State<ChatList>
     });
     final statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
-        backgroundColor: Colors.blue[200],
-        body: Builder(builder: (BuildContext context) {
+        backgroundColor: null,
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.blue[200],
+                  Colors.blue[300],
+                  Colors.blue[400],
+                  Color.fromARGB(255, 180, 70, 255)
+                ]
+            )
+          ),
+        child:Builder(builder: (BuildContext context) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -200,6 +213,6 @@ class _ChatListState extends State<ChatList>
               )
             ],
           );
-        }));
+        })));
   }
 }

@@ -78,11 +78,24 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
         body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewPortConstraints) {
       return Scaffold(
-          backgroundColor: Colors.blue[200],
+
+          backgroundColor: null,
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
               child: Stack(children: [
             Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.blue[200],
+                    Colors.blue[300],
+                    Colors.blue[400],
+                    Color.fromARGB(255, 180, 70, 255)
+                  ]
+                )
+              ),
                 constraints:
                     BoxConstraints(minHeight: viewPortConstraints.maxHeight),
                 child: Align(
@@ -196,7 +209,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                                 Email.text, Password.text);
                                             signInComplete();
                                             if(result.user.uid!=null){
-                                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>ChatList()));
+                                              Navigator.of(context).push(MaterialPageRoute(builder:(context)=>ChatList()));
                                             }else{
                                               loginClickable=true;
                                             }
@@ -233,7 +246,11 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onPressed: GoogleSignIn,
-                        child: Text(GoogleSignInButton))))
+                        child: Row(children: <Widget>[
+                         Image.asset('assets/google.png', width: 30, height: 30),
+                          Padding(padding:EdgeInsets.fromLTRB(18, 0, 10, 0),
+                          child: Text(GoogleSignInButton))
+          ],))))
           ])));
     }));
   }
