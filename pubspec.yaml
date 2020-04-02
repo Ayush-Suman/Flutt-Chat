@@ -25,6 +25,7 @@ dependencies:
   cloud_firestore: ^0.12.9+5
   firebase_analytics: ^5.0.2
   cupertino_icons: ^0.1.2
+  google_sign_in: 4.3.0
 
 dev_dependencies:
   flutter_test:

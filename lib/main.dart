@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_appchat/screens/chatlist.dart';
+import 'package:flutter_appchat/screens/chatscreen.dart';
 import 'package:flutter_appchat/screens/login.dart';
 
 void main() => runApp(MyApp());

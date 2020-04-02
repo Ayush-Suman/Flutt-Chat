@@ -1,4 +1,3 @@
-
 {
   "project_info": {
     "project_number": "834465554526",
@@ -16,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "834465554526-eomg6nmfh2lojv22lu6f4nkqd6qvv9i7.apps.googleusercontent.com",
+          "client_id": "834465554526-2naakdffh2rm4sq7bvcn76bcce42tdc5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "suman.a.flutter_appchat",
-            "certificate_hash": "8c3b722501302921cd5a8c9844c454e599c109bd"
+            "certificate_hash": "e5acc99f28c73f75e06c6972e8ed2d5ec1f5582b"
           }
         },
         {
