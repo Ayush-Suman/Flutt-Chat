@@ -105,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                       blurRadius: 10,
                                       spreadRadius: 0),
                                 ]),
-                            margin: EdgeInsets.only(left: 10, bottom: 5),
+                            margin: EdgeInsets.only(left: 10, bottom: 5, right: 100),
                             child: Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, bottom: 10, right: 20, left: 10),
@@ -131,7 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                       blurRadius: 10,
                                       spreadRadius: 0)
                                 ]),
-                            margin: EdgeInsets.only(right: 10, bottom: 5),
+                            margin: EdgeInsets.only(right: 10, bottom: 5, left: 100),
                             child: Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, bottom: 10, right: 20, left: 10),
