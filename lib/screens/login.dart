@@ -5,6 +5,7 @@ import 'package:flutter_appchat/screens/chatlist.dart';
 import 'package:flutter_appchat/services/signInServices.dart';
 import 'package:flutter_appchat/FadePageRoute.dart';
 import 'package:flutter_appchat/services/FirestoreCalls.dart';
+import 'package:lottie/lottie.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -87,6 +88,15 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           backgroundColor: null,
           resizeToAvoidBottomInset: true,
           body: Stack(children: <Widget>[
+            // Container(
+            //   height: 70,
+            //   child: Lottie.asset(
+            //       'assets/26439-chat-messenger.json',
+            //     width: 30,
+            //     height: 30,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -100,7 +110,26 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                 ]))),
             SingleChildScrollView(
                 child: Stack(children: [
+                  Container(
+                    height: 300,
+                    child: Lottie.asset(
+                            'assets/23620-online-video-chat.json',
+                           width: 500,
+                           height: 100,
+                         //  fit: BoxFit.cover,
+                        ),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.blue[200],
+                                Colors.blue[300],
+
+                              ]))
+                  ),
               Container(
+
                   constraints:
                       BoxConstraints(minHeight: viewPortConstraints.maxHeight),
                   child: Align(
@@ -124,6 +153,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Container(
+                                  height: 45,
                                     margin: EdgeInsets.only(
                                         left: 24.0, right: 24.0, bottom: 10.0),
                                     padding: EdgeInsets.only(
