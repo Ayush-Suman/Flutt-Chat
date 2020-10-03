@@ -6,6 +6,7 @@ import 'package:flutter_appchat/services/signInServices.dart';
 import 'package:flutter_appchat/screens/login.dart';
 import 'package:flutter_appchat/Users.dart';
 import 'package:flutter_appchat/FadePageRoute.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class ChatList extends StatefulWidget {
   @override
@@ -114,8 +115,7 @@ class _ChatListState extends State<ChatList>
                   child: Row(children: <Widget>[
                     Container(
                         margin: EdgeInsets.only(left: 20),
-                        child: Text(
-                          name,
+                        child: Text(name,
                           style: TextStyle(fontSize: 18),
                         )),
                     Expanded(
