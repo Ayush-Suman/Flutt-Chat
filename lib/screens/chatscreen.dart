@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_appchat/services/FirestoreCalls.dart';
 import 'package:flutter_appchat/Chat.dart';
 import 'package:flutter_appchat/Users.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ChatScreen extends StatefulWidget {
   Users user;
@@ -74,7 +75,14 @@ class _ChatScreenState extends State<ChatScreen> {
               ]),
               child: Padding(
                   padding: EdgeInsets.all(18),
-                  child: Text(user.name, style: TextStyle(fontSize: 20))),
+                  child: Row(
+                    children: [
+                      Text(user.name, style: TextStyle(fontSize: 20)),
+
+
+                    ],
+                  )
+      ),
             ),
             Expanded(
                 child: ListView.builder(
@@ -84,7 +92,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 if(chats[position].sentby== "gen"){
                   return Container(
                     height: viewPortConstrains.maxHeight/1.5,
-                    child: Align(alignment: Alignment.center, child:Text("Loading", style: TextStyle(fontSize: 30, color: Colors.black54),)),
+                    child: Center(
+                        child: SpinKitPouringHourglass(
+                      color: Colors.black,
+                      size: 200.0,
+                    )),
+                    //Align(alignment: Alignment.center, child:
+                    //Text("Loading", style: TextStyle(fontSize: 30, color: Colors.black54),)),
                   );
                 }
                 if (chats[position].sentby == user.id) {
@@ -93,26 +107,29 @@ class _ChatScreenState extends State<ChatScreen> {
                           BoxConstraints(minWidth: viewPortConstrains.maxWidth),
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                color: Color.fromARGB(255, 230, 230, 240),
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(5, -5),
-                                      color: Color.fromARGB(100, 0, 0, 0),
-                                      blurRadius: 10,
-                                      spreadRadius: 0),
-                                ]),
-                            margin: EdgeInsets.only(left: 10, bottom: 5, right: 100),
-                            child: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10, bottom: 10, right: 20, left: 10),
-                                child: Text(chats[position].chat,
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.black)))),
-                      ));
+                        child: Stack(children:[
+                          Container(
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                                  color: Color.fromARGB(255, 230, 230, 240),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(5, -5),
+                                        color: Color.fromARGB(100, 0, 0, 0),
+                                        blurRadius: 10,
+                                        spreadRadius: 0),
+                                  ]),
+                              margin: EdgeInsets.only(left: 10, bottom: 5, right: 100),
+                              child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 10, bottom: 10, right: 20, left: 10),
+                                  child: Text(chats[position].time,
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.black))
+
+                              )),
+                      ])));
                 } else {
                   return Container(
                       constraints:
