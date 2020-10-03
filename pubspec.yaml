@@ -27,6 +27,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   google_sign_in: 4.3.0
   lottie: ^0.6.0
+  shimmer: ^1.1.1
+  flutter_spinkit: "^4.1.2"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

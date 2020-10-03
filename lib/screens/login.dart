@@ -6,6 +6,8 @@ import 'package:flutter_appchat/services/signInServices.dart';
 import 'package:flutter_appchat/FadePageRoute.dart';
 import 'package:flutter_appchat/services/FirestoreCalls.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -25,6 +27,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
   bool loginClickable = true;
+
 
   @override
   void initState() {
@@ -85,6 +88,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     return Scaffold(body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewPortConstraints) {
       return Scaffold(
+
           backgroundColor: null,
           resizeToAvoidBottomInset: true,
           body: Stack(children: <Widget>[
@@ -205,7 +209,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(70),
                                         color: Colors.blue[200])),
+
                                 Container(
+
                                     margin: EdgeInsets.fromLTRB(20, 50, 20, 30),
                                     width: 150,
                                     decoration: BoxDecoration(
@@ -240,55 +246,57 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 6.0)
                                         ]),
-                                    child: FlatButton(
-                                        splashColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onPressed: () async {
-                                          if (loginClickable) {
-                                            loginClickable = false;
+                                      child: FlatButton(
 
-                                            _controller.reset();
-                                            _controller
-                                                .forward()
-                                                .then((value) async {
-                                              SignInButton = "Signing in...";
-                                              FocusScope.of(context)
-                                                  .requestFocus(FocusNode());
-                                              try {
-                                                print("Started login");
-                                                AuthResult result =
-                                                    await _signInServices
-                                                        .signInUsingEmail(
-                                                            Email.text,
-                                                            Password.text);
-                                                signInComplete();
-                                                if (result.user.uid != null) {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              ChatList()));
-                                                } else {
+                                          splashColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onPressed: () async {
+                                            if (loginClickable) {
+                                              loginClickable = false;
+
+                                              _controller.reset();
+                                              _controller
+                                                  .forward()
+                                                  .then((value) async {
+                                                SignInButton = "Signing in...";
+                                                FocusScope.of(context)
+                                                    .requestFocus(FocusNode());
+                                                try {
+                                                  print("Started login");
+                                                  AuthResult result =
+                                                      await _signInServices
+                                                          .signInUsingEmail(
+                                                              Email.text,
+                                                              Password.text);
+                                                  signInComplete();
+                                                  if (result.user.uid != null) {
+                                                    Navigator.of(context).push(
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                ChatList()));
+                                                  } else {
+                                                    loginClickable = true;
+                                                  }
+                                                } catch (e) {
                                                   loginClickable = true;
+                                                  Scaffold.of(context)
+                                                      .showSnackBar(SnackBar(
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                          content: Text(
+                                                            "Something went wrong",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.black),
+                                                          )));
+                                                  print(e);
+                                                  signInComplete();
                                                 }
-                                              } catch (e) {
-                                                loginClickable = true;
-                                                Scaffold.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        backgroundColor:
-                                                            Colors.white,
-                                                        content: Text(
-                                                          "Something went wrong",
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black),
-                                                        )));
-                                                print(e);
-                                                signInComplete();
-                                              }
-                                            });
-                                          }
-                                        },
-                                        child: Text(SignInButton)))
+                                              });
+                                            }
+                                          },
+                                          child: Text(SignInButton)),
+                                    )
                               ])))),
               Align(
                   alignment: Alignment.center,

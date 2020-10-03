@@ -79,6 +79,7 @@ class _ChatListState extends State<ChatList>
     return LayoutBuilder(builder:(BuildContext context, BoxConstraints viewPortConstraints){return Scaffold(
       backgroundColor: null,
       body: Container(
+
         constraints: BoxConstraints(minHeight: viewPortConstraints.maxHeight),
         decoration: BoxDecoration(
             gradient: LinearGradient(
