@@ -116,7 +116,7 @@ class _ChatListState extends State<ChatList>
                     Container(
                         margin: EdgeInsets.only(left: 20),
                         child: Text(name,
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18,color: Colors.red),
                         )),
                     Expanded(
                         child: Container(
