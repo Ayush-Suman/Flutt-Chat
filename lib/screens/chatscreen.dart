@@ -4,9 +4,11 @@ import 'package:flutter_appchat/services/FirestoreCalls.dart';
 import 'package:flutter_appchat/Chat.dart';
 import 'package:flutter_appchat/Users.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ChatScreen extends StatefulWidget {
   Users user;
+  final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 100));
 
   ChatScreen(this.user) : super();
 
@@ -23,6 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Users user;
   String selfid;
   String uids;
+  final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
 
   _ChatScreenState(this.user) : super();
 
@@ -77,7 +80,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   padding: EdgeInsets.all(18),
                   child: Row(
                     children: [
-                      Text(user.name, style: TextStyle(fontSize: 20)),
+                      Text(user.name,style: TextStyle(fontSize: 20, color: Colors.lightBlueAccent
+                      )),
 
 
                     ],
@@ -124,7 +128,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               child: Padding(
                                   padding: EdgeInsets.only(
                                       top: 10, bottom: 10, right: 20, left: 10),
-                                  child: Text(chats[position].time,
+                                  child: Text(chats[position].chat,
                                       style: TextStyle(
                                           fontSize: 18, color: Colors.black))
 
